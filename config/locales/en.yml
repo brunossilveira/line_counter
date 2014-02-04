@@ -1,0 +1,4 @@
+# English strings go here for Rails i18n
+en:
+  label_issue_branches: 'Branches'
+  label_search_for_branches: "Search for branches"

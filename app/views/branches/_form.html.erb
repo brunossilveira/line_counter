@@ -1,0 +1,11 @@
+<p id="branches_form"><label><%= l(:label_issue_branches) %></label>
+      <span id="branches_inputs">
+        <%= branches_checkboxes(@issue) %>
+      </span>
+      <span class="search_for_branches">
+      <%= link_to l(:label_search_for_branches),
+                  {:controller => 'branches', :action => 'new', :issue_id => @issue},
+                  :remote => true,
+                  :method => 'get' %>
+      </span>
+</p>

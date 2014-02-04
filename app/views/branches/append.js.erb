@@ -1,0 +1,4 @@
+<% @branches.each do |branch| %>
+$("#issue_branch_id_<%= branch.id %>").remove();
+<% end %>
+$('#branches_inputs').append('<%= escape_javascript(branches_list(@branches)) %>');
