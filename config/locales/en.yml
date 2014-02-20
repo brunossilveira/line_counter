@@ -2,3 +2,10 @@
 en:
   label_issue_branches: 'Branches'
   label_search_for_branches: "Search for branches"
+  label_branch_search: 'Search for branch:'
+  label_no_repositories: 'There are no repositories for this project'
+  label_new_repository: 'New Repository'
+  add_issue_branches: 'Add Branches'
+  lines: 'lines'
+  field_repository_name: 'Name'
+  field_repository_url: 'URL'

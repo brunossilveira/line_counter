@@ -1,20 +1,18 @@
-<h3 class="title"><%= l(:permission_add_issue_branches) %></h3>
+<h3 class="title"><%= l(:add_issue_branches) %></h3>
 
 <%= form_tag({:controller => 'branches',
               :action => ('append'),
-              :object_type => (issue && issue.class.name.underscore),
-              :object_id => issue.id,
-              :project_id => issue.project.id},
+              :issue => @issue,
+              :project_id => @issue.project.id},
              :remote => true,
              :method => :post,
              :id => 'new-branch-form') do %>
 
-    <p><%= label_tag 'branch_search', l(:label_branch_search) %><%= text_field_tag 'branch_search', nil %></p>
     <div id="branches_for_issue">
-      <% issue.project.repositories.each do |rep| %>
-          <p><strong><%= label_tag "repo#{rep.id}", rep.identifier %></strong></p>
+      <% @repositories.each do |rep| %>
+          <p><strong><%= "#{rep.name}" %></strong></p>
           <% rep.branches.each do |branch| %>
-              <p><%= check_box_tag 'branches[]', "#{rep.id},#{branch}" %> <%= branch %></p>
+              <p><%= check_box_tag 'branch[branch_ids][]', "#{rep.id},#{branch.name}" %> <%= branch.name %></p>
           <% end %>
       <% end %>
     </div>

@@ -6,7 +6,6 @@ module IssuePatch
 
     # Exectue this code at the class level (not instance level)
     base.class_eval do
-      unloadable
       has_many :branches
     end
   end

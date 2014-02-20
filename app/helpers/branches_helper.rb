@@ -1,27 +1,22 @@
-class BranchesHelper
-
-
-  # Returns a list of branches selected for the issues
+module BranchesHelper
+  # Returns a comma separated list of users watching the given issue
   def branches_list(branches)
-    return [1,2,3,4,5,6]
-    remove_allowed = User.current.allowed_to?("delete_#{object.class.name.underscore}_watchers".to_sym, object.project)
+    #remove_allowed = User.current.allowed_to?("delete_#{issue.class.name.underscore}_watchers".to_sym, issue.project)
     content = ''.html_safe
-    lis = object.watcher_users.collect do |user|
+    branches.each do |branch|
       s = ''.html_safe
-      s << avatar(user, :size => "16").to_s
-      s << link_to_user(user, :class => 'user')
-      if remove_allowed
-        url = {:controller => 'watchers',
-               :action => 'destroy',
-               :object_type => object.class.to_s.underscore,
-               :object_id => object.id,
-               :user_id => user}
-        s << ' '
-        s << link_to(image_tag('delete.png'), url,
-                     :remote => true, :method => 'delete', :class => "delete")
-      end
-      content << content_tag('li', s, :class => "user-#{user.id}")
+      #if remove_allowed
+      url = {:controller => 'branches',
+             :action => 'destroy',
+             :issue_id => branch.issue,
+             :branch_id => branch}
+      s << "#{branch.name} ".html_safe
+      s << link_to(image_tag('delete.png'), url,
+                   :remote => true, :method => 'delete', :class => "delete")
+      #end
+      content << content_tag('li', s, :class => "branch-#{branch.id}", :id =>"issue_branch_id_#{branch.id}")
     end
-    content.present? ? content_tag('ul', content, :class => 'watchers') : content
+    content.present? ? content_tag('ul', content, :class => 'branches') : content
   end
+
 end

@@ -1,10 +1,15 @@
-<div class="contextual">
-  <%= link_to l(:button_add),
-              {:controller => 'watchers', :action => 'new', :object_type => watched.class.name.underscore, :object_id => watched},
-              :remote => true,
-              :method => 'get' %>
-</div>
+<% if @issue %>
+    <div id="branches">
+      <div class="contextual">
+        <%= link_to l(:button_add),
+                    {:controller => 'branches', :action => 'new', :issue => @issue},
+                    :remote => true,
+                    :method => 'get' %>
+      </div>
 
-<h3><%= l(:label_issue_watchers) %> (<%= watched.watcher_users.size %>)</h3>
+      <h3><%= l(:label_issue_branches) %> (<%= @issue.branches.size %>)</h3>
+      <%= branches_list(@issue.branches.all) %>
 
-<%= watchers_list(watched) %>
+    </div>
+
+<% end %>

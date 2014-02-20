@@ -1,0 +1,12 @@
+<hr>
+<p><strong>Branches</strong></p>
+<ul>
+  <% @issue.branches.each do |branch| %>
+      <p>
+      <li>
+        <strong> <%= branch.counter_repository.name %></strong> - <%= branch.name %>
+        | <%= branch.diff %> <%= l(:lines) %>
+      </li>
+      </p>
+  <% end %>
+</ul>

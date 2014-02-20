@@ -1,0 +1,32 @@
+<div class="contextual">
+  <%= link_to(l(:label_repository_new), new_counter_repository_path(@project), :class => 'icon icon-add') %>
+</div>
+
+<h2><%= l(:label_repository_plural) %></h2>
+<% if @repositories.count > 0 %>
+    <table class="list">
+      <thead>
+      <tr>
+        <th><%= l(:field_repository_name) %></th>
+        <th><%= l(:field_repository_url) %></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <% @repositories.each do |repo| %>
+          <tr>
+            <td><%= repo.name %></td>
+            <td><%= repo.url %></td>
+            <td>
+              <%= link_to image_tag('edit.png'), edit_counter_repository_path(repo.id), :class => "edit" %>
+              <%= link_to(image_tag('delete.png'), counter_repository_path(repo.id),
+                          :method => 'delete', :class => "delete") %>
+
+            </td>
+          </tr>
+      <% end %>
+
+    </table>
+<% else %>
+    <p><%= l(:label_no_repositories) %></p>
+<% end %>

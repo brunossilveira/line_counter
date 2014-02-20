@@ -10,6 +10,9 @@ Redmine::Plugin.register :line_counter do
   url 'http://github.com/brunossilveira'
   author_url 'http://github.com/brunossilveira'
 
+  permission :counter_repositories, {:counter_repositories => [:index]}, :public => true
+  menu :project_menu, :counter_repositories, {:controller => 'counter_repositories', :action => 'index'}, :caption => 'Line Counter'
+
   ActionDispatch::Callbacks.to_prepare do
     # Redmine's files patches
     Issue.send(:include, IssuePatch)

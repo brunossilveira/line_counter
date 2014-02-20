@@ -1,0 +1,10 @@
+<div class="box tabular">
+  <%= labelled_form_for @repository do |f| %>
+      <input name="project_id" type="hidden" value="<%= @project.identifier %>">
+
+      <p><%= f.text_field :name %></p>
+
+      <p><%= f.text_field :url %></p>
+      </div>
+      <%= submit_tag l(:button_submit) %>
+  <% end %>
