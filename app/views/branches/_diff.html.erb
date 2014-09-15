@@ -10,3 +10,14 @@
       </p>
   <% end %>
 </ul>
+</br>
+<p><strong>Estimated Lines:</strong> <%= @issue.estimated_lines %> |
+  <strong>Total Lines:</strong> <%= @issue.get_total_diff %> (<%= @issue.get_percentage_done_calculated %>% completed)
+</p>
+<p><strong>Estimated Hours:</strong> <%= @issue.estimated_hours %> |
+  <strong>Total Hours:</strong> <%= @issue.total_spent_hours %></p>
+
+<p><strong>Inspection</strong></p>
+<p><strong>Preparation Time:</strong> <%= @issue.get_total_diff/Setting.plugin_line_counter['preparation_lines'].to_i %> Hours</p>
+<p><strong>Inspection Duration:</strong> <%=  %></p>
+<p><strong>Rework Time:</strong> <%=  %></p>

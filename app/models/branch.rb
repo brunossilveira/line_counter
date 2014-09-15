@@ -4,13 +4,13 @@ class Branch < ActiveRecord::Base
 
   unloadable
 
-  attr_accessible :name, :counter_repository, :issue
+  attr_accessible :name, :counter_repository, :issue, :diff
 
   belongs_to :issue
   belongs_to :counter_repository
 
 
-  def diff
+  def get_diff
     count = 0
     repo = Rugged::Repository.new(counter_repository.url)
     diff = repo.diff(name, 'master')

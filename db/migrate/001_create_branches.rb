@@ -4,6 +4,7 @@ class CreateBranches < ActiveRecord::Migration
       t.string :name
       t.references :counter_repository
       t.references :issue
+      t.integer :diff
 
     end
     add_index :branches, :issue_id

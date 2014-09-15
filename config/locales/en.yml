@@ -6,6 +6,8 @@ en:
   label_no_repositories: 'There are no repositories for this project'
   label_new_repository: 'New Repository'
   add_issue_branches: 'Add Branches'
-  lines: 'lines'
+  lines: 'Lines'
   field_repository_name: 'Name'
   field_repository_url: 'URL'
+  field_estimated_lines: 'Estimated lines'
+
