@@ -1,0 +1,56 @@
+<%= labelled_form_for @project,
+             :url => { :action => 'monitoring_settings', :id => @project },
+             :html => {:id => 'monitoring-form',
+                       :method => :post} do |f| %>
+
+    <div class="box tabular">
+      <p>        
+        <%= f.text_field :inspection_preparation_average, :size => 30, :value => @project.inspection_preparation_average ? @project.inspection_preparation_average : Setting.plugin_monitoring['inspection_preparation_average']   %>
+      </p>
+      <p>        
+        <%= f.text_field :inspection_average, :size => 30, :value => @project.inspection_average ? @project.inspection_average : Setting.plugin_monitoring['inspection_average'] %>
+      </p>
+      <p>        
+        <%= f.text_field :rework_average, :size => 30, :value => @project.rework_average ? @project.rework_average : Setting.plugin_monitoring['rework_average'] %>
+      </p>
+      <p>        
+        <%= f.text_field :productivity_average, :size => 30, :value => @project.productivity_average ? @project.productivity_average : Setting.plugin_monitoring['productivity_average'] %>
+      </p>
+      <hr/>
+      <table class="list">
+        <thead>
+          <th>&nbsp;</th>
+          <% complexities = CustomField.where(:name => 'Complexity').first.possible_values %>
+          <% complexities.each do |complexity| %>
+            <th><%= complexity %></th>
+          <% end %>
+        </thead>
+        <tbody>          
+          <% @project.trackers.each do |t| %>            
+            <tr>
+              <td><strong><%= t.name %></strong></td>  
+              <% complexities.each do |complexity| %>
+                <td>
+                  <% c = @project.correction_factors.where(:tracker_id => t.id, :complexity => complexity).first %>
+                  <% value = c.value unless c.nil? %>
+                  <input name="correction_factors[][value]" type="number" value="<%= value %>" step="0.01"/>
+                  <input name="correction_factors[][tracker_id]" value="<%= t.id %>"type="hidden" step="0.01"/>
+                  <input name="correction_factors[][complexity]" value="<%= complexity %>"type="hidden" step="0.01"/>
+                </td>
+            <% end %>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+
+      
+
+    </div>
+
+    <p><%= submit_tag l(:button_save) %></p>
+
+<% end %>
+
+
+

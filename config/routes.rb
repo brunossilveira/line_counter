@@ -10,9 +10,12 @@
 #put 'counter_repositories', :to => 'counter_repositories#update'
 
 resources :counter_repositories
+resources :monitoring
 
 # Branches Routes
 get 'branches/new', :to => 'branches#new'
+get 'projects/:id/monitoring', :to => 'monitoring#index'
+post 'project/settings/monitoring', :to => 'projects#monitoring_settings'
 post 'branches/append', :to => 'branches#append'
 post 'branches', :to => 'branches#create'
 delete 'branches/:issue_id', :to => 'branches#destroy'

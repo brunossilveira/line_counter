@@ -1,10 +1,32 @@
 <table>
   <tbody>
   <tr>
-    <th>Inspection Preparation  - Lines Per Hour</th>
-    <td><input type="text" id="settings_preparation_lines"
-               value="<%= settings['preparation_lines'] %>"
-               name="settings[preparation_lines]" >
+    <th>Inspection Preparation Average</th>
+    <td><input type="text" id="inspection_preparation_average"
+               value="<%= settings['inspection_preparation_average'] %>"
+               name="settings[inspection_preparation_average]"></td>
+    <td>Lines Per Hour</td>
   </tr>
+  <tr>
+    <th>Inspection Average</th>
+    <td><input type="text" id="inspection_average"
+               value="<%= settings['inspection_average'] %>"
+               name="settings[inspection_average]"></td>
+    <td>Lines Per Hour</td>
+  </tr>
+  <tr>
+    <th>Inspection Rework Average</th>
+    <td><input type="text" id="rework_average"
+               value="<%= settings['rework_average'] %>"
+               name="settings[rework_average]"></td>
+    <td>Lines Per Hour</td>
+  </tr>
+  <tr>
+    <th>Productivity Average</th>
+    <td><input type="text" id="productivity_average"
+               value="<%= settings['productivity_average'] %>"
+               name="settings[productivity_average]"></td>
+    <td>Lines Per Hour</td>
+  </tr>  
   </tbody>
 </table>
