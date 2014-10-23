@@ -15,9 +15,7 @@ module IssueQueryPatch
       columns = available_columns_without_monitoring
 
       columns.each_with_index { |column, i| return columns if column.name == :estimated_lines }
-      columns.push(QueryColumn.new(:estimated_lines, :caption => :label_estimated_lines,
-                                   :sortable => 'estimated_lines',
-                                   :default_order => 'asc'))
+      columns.push(QueryColumn.new(:estimated_lines, :caption => :label_estimated_lines))
 
       columns.each_with_index { |column, i| return columns if column.name == :commited_lines }
       columns.push(QueryColumn.new(:commited_lines, :caption => :label_commited_lines,
@@ -35,9 +33,7 @@ module IssueQueryPatch
                                    :default_order => 'asc'))
 
       columns.each_with_index { |column, i| return columns if column.name == :calculated_productivity }
-      columns.push(QueryColumn.new(:calculated_productivity, :caption => :label_calculated_productivity,
-                                   :sortable => 'calculated_productivity',
-                                   :default_order => 'asc'))
+      columns.push(QueryColumn.new(:calculated_productivity, :caption => :label_calculated_productivity))
 
       columns.each_with_index { |column, i| return columns if column.name == :projected_hours }
       columns.push(QueryColumn.new(:projected_hours, :caption => :label_projected_hours))

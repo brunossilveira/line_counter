@@ -6,11 +6,7 @@ module IssuePatch
 
     # Exectue this code at the class level (not instance level)
     base.class_eval do
-      has_many :branches
-      attr_accessible :estimated_lines
-
-
-      safe_attributes 'estimated_lines', :if => lambda { |issue, user| issue.new_record? || user.allowed_to?(:edit_issues, issue.project) }
+      has_many :branches      
     end
   end
 
@@ -57,6 +53,10 @@ module IssuePatch
       calculate(self.project.productivity_average, fixed_estimated_hours) do 
         self.project.productivity_average * fixed_estimated_hours
       end      
+    end
+    
+    def estimated_lines
+      ticket_size 
     end
 
     def inspection_preparation_time
