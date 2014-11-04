@@ -9,7 +9,6 @@ class Branch < ActiveRecord::Base
   belongs_to :issue
   belongs_to :counter_repository
 
-
   def get_diff
     count = 0
     repo = Rugged::Repository.new(counter_repository.url)
@@ -18,12 +17,10 @@ class Branch < ActiveRecord::Base
     diff.each_patch do |patch|
       patch.hunks.each do |hunk|
         hunk.lines.each do |line|
-          count = count + 1 if (line.new_lineno == -1 && !line.content.blank?)
-          count = count - 1 if line.old_lineno == -1
+          count = count + 1 if (line.new_lineno == -1 && !line.content.blank?)          
         end
       end
     end
     count
   end
-
 end

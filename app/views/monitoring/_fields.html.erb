@@ -2,11 +2,11 @@
   <th class="status">Size:</th>
   <td class="status"><%= @issue.ticket_size %> lines</td>
   <th class="start-date">Inspection Preparation Time:</th>
-  <td class="start-date"><%= @issue.inspection_preparation_time %> hours</td>
+  <td class="start-date"><%= Time.at(@issue.inspection_preparation_time).utc.strftime("%H:%M") %> hours</td>
 </tr>
 <tr>
   <th class="status">Inspection Time:</th>
-  <td class="status"><%= @issue.inspection_time %> hours</td>
+  <td class="status"><%= Time.at(@issue.inspection_time).utc.strftime("%H:%M")  %> hours</td>
   <th class="start-date">Inspection Rework Time:</th>
-  <td class="start-date"><%= @issue.inspection_rework_time %> hours</td>
+  <td class="start-date"><%= Time.at(@issue.inspection_rework_time).utc.strftime("%H:%M") %> hours</td>
 </tr>

@@ -61,19 +61,19 @@ module IssuePatch
 
     def inspection_preparation_time
       calculate(ticket_size, self.project.inspection_preparation_average) do 
-        ticket_size / self.project.inspection_preparation_average 
+        (ticket_size / self.project.inspection_preparation_average) * 60 * 60 
       end      
     end
 
     def inspection_time
       calculate(ticket_size, self.project.inspection_average) do
-        ticket_size / self.project.inspection_average
+        (ticket_size / self.project.inspection_average) * 60 * 60 
       end
     end
 
     def inspection_rework_time
       calculate(ticket_size, self.project.rework_average) do 
-        ticket_size / self.project.rework_average
+        (ticket_size / self.project.rework_average) * 60 * 60 
       end      
     end
 

@@ -17,7 +17,7 @@
         <%= f.text_field :productivity_average, :size => 30, :value => @project.productivity_average ? @project.productivity_average : Setting.plugin_monitoring['productivity_average'] %>
       </p>
       <hr/>
-      <table class="list">
+      <table>
         <thead>
           <th>&nbsp;</th>
           <% complexities = CustomField.where(:name => 'Complexity').first.possible_values %>
