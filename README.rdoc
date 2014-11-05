@@ -1,3 +1,5 @@
-= monitoring
+Redmine plugin that allows users to add repositories to projects and branches to tickets. 
+The diff from the branches and its master is calculated, and several columns are added to IssueQuery, allowing to
+generate lots of different reports.
 
-Description goes here
+Tool developed to Bachelor of Systems Information at Universidade Federal de Santa Catarina.
