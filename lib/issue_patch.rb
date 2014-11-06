@@ -6,11 +6,7 @@ module IssuePatch
 
     # Exectue this code at the class level (not instance level)
     base.class_eval do
-      has_many :branches
-      attr_accessible :estimated_lines
-
-
-      safe_attributes 'estimated_lines', :if => lambda { |issue, user| issue.new_record? || user.allowed_to?(:edit_issues, issue.project) }
+      has_many :branches      
     end
   end
 
@@ -21,6 +17,12 @@ module IssuePatch
     def commited_lines
       return branches.sum(:diff) unless branches.sum(:diff).nil?
       0
+    end
+
+    def estimated_lines
+      calculate(calculated_estimated_time, self.project.productivity_average) do 
+        calculated_estimated_time * self.project.productivity_average
+      end 
     end
 
     def calculated_lines_percentage      
